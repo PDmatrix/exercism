@@ -19,6 +19,12 @@ fn test_sixth_prime() {
 
 #[test]
 #[ignore]
+fn test_fourth_prime() {
+    assert_eq!(np::nth(3), 7);
+}
+
+#[test]
+#[ignore]
 fn test_third_prime() {
     assert_eq!(np::nth(2), 5);
 }

@@ -1,12 +1,13 @@
 pub fn nth(n: u32) -> u32 {
-    let mut prime: Vec<u32> = (0..=(n + 100)).collect();
+    let upper_bound = 10000000;
+    let mut prime: Vec<u32> = (0..=upper_bound).collect();
     prime[1] = 0;
 
     let mut i = 2;
-    while i <= n {
+    while i <= upper_bound {
         if prime[i as usize] != 0 {
             let mut j = i + i;
-            while j <= n {
+            while j <= upper_bound {
                 prime[j as usize] = 0;
                 j = j + i;
             }
