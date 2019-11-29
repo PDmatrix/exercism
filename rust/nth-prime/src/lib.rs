@@ -1,30 +1,12 @@
 pub fn nth(n: u32) -> u32 {
-    let upper_bound = 10000000;
-    let mut prime: Vec<u32> = (0..=upper_bound).collect();
-    prime[1] = 0;
-
-    let mut i = 2;
-    while i <= upper_bound {
-        if prime[i as usize] != 0 {
-            let mut j = i + i;
-            while j <= upper_bound {
-                prime[j as usize] = 0;
-                j = j + i;
-            }
-        }
-        i = i + 1;
+    match n {
+        n if n == 0 => 2,
+        n => (2..).filter(|x| is_prime(*x)).nth(n as usize).unwrap(),
     }
+}
 
-    let primes: Vec<u32> = prime.into_iter().filter(|x| *x != 0).collect();
+fn is_prime(n: u32) -> bool {
+    let m = (n as f32).sqrt() as u32;
 
-    primes[n as usize] as u32
-
-    //primes[n as usize] as u32
-    /*vector<char> prime (n+1, true);
-    prime[0] = prime[1] = false;
-    for (int i=2; i<=n; ++i)
-    if (prime[i])
-    if (i * 1ll * i <= n)
-    for (int j=i*i; j<=n; j+=i)
-    prime[j] = false;*/
+    !(2..=m).any(|i| n % i == 0)
 }
